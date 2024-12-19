@@ -48,7 +48,21 @@ namespace Advent_of_Code_2024.Day04
 
         public void Part02()
         {
-            throw new NotImplementedException();
+            input = FileHelper.ReadLinesFromTxtFile("input.txt", nameof(Day04)).ToList();
+            rows = input.Count;
+            columns = input[0].Length;
+
+            int count = 0;
+
+            for (int i = 0; i < rows - 1; i++)
+            {
+                for (int j = 0; j < columns - 1; j++)
+                {
+                    count += CountInXPattern(i, j);
+                }
+            }
+
+            OutputHelper.DisplayResultMessage("Day 04 - Part 02", count);
         }
 
         private int CountWithDirections(int rowPosition, int columnPosition, Directions rowDirection, Directions columnDirection, string keyword)
@@ -67,25 +81,6 @@ namespace Advent_of_Code_2024.Day04
             }
 
             return 1;
-        }
-
-        public void Part02()
-        {
-            input = FileHelper.ReadLinesFromTxtFile("input.txt", nameof(Day04)).ToList();
-            rows = input.Count;
-            columns = input[0].Length;
-
-            int count = 0;
-
-            for (int i = 0; i < rows - 1; i++)
-            {
-                for (int j = 0; j < columns - 1; j++)
-                {
-                    count += CountInXPattern(i, j);
-                }
-            }
-
-            OutputHelper.DisplayResultMessage("Day 04 - Part 02", count);
         }
 
         private int CountInXPattern(int rowPosition, int columnPosition)
