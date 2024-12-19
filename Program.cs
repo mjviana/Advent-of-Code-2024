@@ -35,4 +35,6 @@ day03.Part02();
 Day04 day04 = new();
 
 day04.Part01();
+day04.Part02();
+
 #endregion

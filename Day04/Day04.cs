@@ -14,8 +14,9 @@ namespace Advent_of_Code_2024.Day04
 
     public class Day04 : IPuzzle
     {
-        const string Keyword = "XMAS";
-        List<string> input = new();
+        const string KeywordPart01 = "XMAS";
+        const string KeywordPart02 = "MAS";
+        List<string> input = [];
         int rows = 0;
         int columns = 0;
         public void Part01()
@@ -30,14 +31,14 @@ namespace Advent_of_Code_2024.Day04
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    count += CountWithDirections(i, j, Directions.Right, Directions.Straight, Keyword);
-                    count += CountWithDirections(i, j, Directions.Left, Directions.Straight, Keyword);
-                    count += CountWithDirections(i, j, Directions.Straight, Directions.Down, Keyword);
-                    count += CountWithDirections(i, j, Directions.Straight, Directions.Up, Keyword);
-                    count += CountWithDirections(i, j, Directions.Right, Directions.Down, Keyword);
-                    count += CountWithDirections(i, j, Directions.Right, Directions.Up, Keyword);
-                    count += CountWithDirections(i, j, Directions.Left, Directions.Down, Keyword);
-                    count += CountWithDirections(i, j, Directions.Left, Directions.Up, Keyword);
+                    count += CountWithDirections(i, j, Directions.Right, Directions.Straight, KeywordPart01);
+                    count += CountWithDirections(i, j, Directions.Left, Directions.Straight, KeywordPart01);
+                    count += CountWithDirections(i, j, Directions.Straight, Directions.Down, KeywordPart01);
+                    count += CountWithDirections(i, j, Directions.Straight, Directions.Up, KeywordPart01);
+                    count += CountWithDirections(i, j, Directions.Right, Directions.Down, KeywordPart01);
+                    count += CountWithDirections(i, j, Directions.Right, Directions.Up, KeywordPart01);
+                    count += CountWithDirections(i, j, Directions.Left, Directions.Down, KeywordPart01);
+                    count += CountWithDirections(i, j, Directions.Left, Directions.Up, KeywordPart01);
                 }
             }
 
@@ -66,6 +67,34 @@ namespace Advent_of_Code_2024.Day04
             }
 
             return 1;
+        }
+
+        public void Part02()
+        {
+            input = FileHelper.ReadLinesFromTxtFile("input.txt", nameof(Day04)).ToList();
+            rows = input.Count;
+            columns = input[0].Length;
+
+            int count = 0;
+
+            for (int i = 0; i < rows - 1; i++)
+            {
+                for (int j = 0; j < columns - 1; j++)
+                {
+                    count += CountInXPattern(i, j);
+                }
+            }
+
+            OutputHelper.DisplayResultMessage("Day 04 - Part 02", count);
+        }
+
+        private int CountInXPattern(int rowPosition, int columnPosition)
+        {
+            int count = CountWithDirections(rowPosition + (int)Directions.Left, columnPosition + (int)Directions.Up, Directions.Right, Directions.Down, "MAS");
+            count += CountWithDirections(rowPosition + (int)Directions.Left, columnPosition + (int)Directions.Down, Directions.Right, Directions.Up, "MAS");
+            count += CountWithDirections(rowPosition + (int)Directions.Right, columnPosition + (int)Directions.Up, Directions.Left, Directions.Down, "MAS");
+            count += CountWithDirections(rowPosition + (int)Directions.Right, columnPosition + (int)Directions.Down, Directions.Left, Directions.Up, "MAS");
+            return count == 2 ? 1 : 0;
         }
     }
 }
