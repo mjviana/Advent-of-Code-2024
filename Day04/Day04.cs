@@ -1,3 +1,4 @@
+using Advent_of_Code_2024.Business;
 using Advent_of_Code_2024.Helpers;
 
 namespace Advent_of_Code_2024.Day04
@@ -11,7 +12,7 @@ namespace Advent_of_Code_2024.Day04
         Right = 1
     }
 
-    public class Day04
+    public class Day04 : IPuzzle
     {
         const string Keyword = "XMAS";
         List<string> input = new();
@@ -42,6 +43,11 @@ namespace Advent_of_Code_2024.Day04
 
             OutputHelper.DisplayResultMessage("Day 04 - Part 01", count);
 
+        }
+
+        public void Part02()
+        {
+            throw new NotImplementedException();
         }
 
         private int CountWithDirections(int rowPosition, int columnPosition, Directions rowDirection, Directions columnDirection, string keyword)

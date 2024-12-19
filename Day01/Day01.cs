@@ -1,8 +1,9 @@
 using System;
+using Advent_of_Code_2024.Business;
 
 namespace Advent_of_Code_2024.Day01;
 
-public class Day01
+public class Day01 : IPuzzle
 {
     public void Part01()
     {

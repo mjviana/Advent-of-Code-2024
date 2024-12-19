@@ -1,8 +1,9 @@
 using System;
+using Advent_of_Code_2024.Business;
 
 namespace Advent_of_Code_2024.Day02;
 
-public class Day02
+public class Day02 : IPuzzle
 {
     internal class Report(string line)
     {

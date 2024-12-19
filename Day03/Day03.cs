@@ -1,9 +1,10 @@
 using System.Text.RegularExpressions;
+using Advent_of_Code_2024.Business;
 using Advent_of_Code_2024.Helpers;
 
 namespace Advent_of_Code_2024.Day03;
 
-public class Day03
+public class Day03 : IPuzzle
 {
     private readonly string _multiplicationPattern = @"mul\(\d{1,3}\,\d{1,3}\)";
     private readonly string _valuesPattern = @"\d{1,3}";
